@@ -17,7 +17,7 @@ export default function Header() {
     { id: "contact", label: "Contact" },
   ];
 
-  // Load theme from localStorage on first render
+  // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
@@ -26,7 +26,6 @@ export default function Header() {
     }
   }, []);
 
-  // Toggle theme and save to localStorage
   const toggleTheme = () => {
     setDark((prev) => {
       const newMode = !prev;
@@ -42,14 +41,16 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur border-b border-zinc-200 dark:border-zinc-800">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="h-9 w-9 rounded-xl bg-zinc-900 dark:bg-zinc-100 flex items-center justify-center text-white dark:text-zinc-900 font-bold">
             IS
           </div>
-          <span className="font-semibold">Ismail Shaikh</span>
+          <span className="font-semibold text-gray-900 dark:text-white">
+            Ismail Shaikh
+          </span>
         </div>
 
         {/* Desktop Nav */}
@@ -58,11 +59,17 @@ export default function Header() {
             <Link
               key={n.id}
               href={`#${n.id}`}
-              className="text-sm font-semibold hover:text-zinc-900 dark:hover:text-white"
+              className="text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-purple-500"
             >
               {n.label}
             </Link>
           ))}
+          <button
+            onClick={toggleTheme}
+            className="h-9 w-9 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-center"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
         {/* Mobile Nav Toggle */}
@@ -78,17 +85,24 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800">
+        <div className="md:hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
           <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2">
             {navItems.map((n) => (
               <Link
                 key={n.id}
                 href={`#${n.id}`}
+                className="text-gray-900 dark:text-gray-200 hover:text-purple-500"
                 onClick={() => setMobileOpen(false)}
               >
                 {n.label}
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="h-9 w-9 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-center"
+            >
+              {dark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
           </div>
         </div>
       )}
