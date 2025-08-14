@@ -1,11 +1,9 @@
-
-
 "use client";
 import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section className="w-full py-10">
+    <section className="w-full py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Heading */}
         <motion.h2
@@ -13,7 +11,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-black mb-12 text-center"
+          className="text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center"
         >
           About Me
         </motion.h2>
@@ -24,13 +22,10 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative rounded-3xl p-10 grid md:grid-cols-2 gap-12 items-center shadow-xl border border-white/30 overflow-hidden"
+          className="relative rounded-3xl p-10 grid md:grid-cols-2 gap-12 items-center shadow-xl border border-white/30 overflow-hidden bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg"
         >
           {/* Animated Background Layer */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 animate-gradient bg-[length:200%_200%] opacity-40"></div>
-
-          {/* Glass Layer */}
-          <div className="absolute inset-0 backdrop-blur-lg bg-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 animate-gradient bg-[length:200%_200%] opacity-40 z-0"></div>
 
           {/* Left - Image */}
           <motion.div
@@ -55,14 +50,14 @@ export default function About() {
             viewport={{ once: true }}
             className="relative z-10"
           >
-            <p className="text-lg text-black leading-relaxed mb-6">
+            <p className="text-lg text-gray-900 dark:text-gray-100 leading-relaxed mb-6">
               Hello! I’m <span className="font-semibold">Ismail Shaikh</span>, a passionate
               <span className="font-semibold"> Frontend Developer</span> who loves crafting
               modern, responsive, and user-friendly websites. I focus on creating designs
               that are not only visually appealing but also deliver a seamless user
               experience.
             </p>
-            <p className="text-lg text-white leading-relaxed">
+            <p className="text-lg text-gray-800 dark:text-gray-300 leading-relaxed">
               I specialize in <span className="font-semibold">React.js, Next.js, and Tailwind CSS</span>.
               I believe in clean, maintainable code and bringing ideas to life with a blend
               of creativity and logic.
